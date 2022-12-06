@@ -1,121 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MomentJS</title>
-  </head>
-  <body id="body">
-    <button
-      onclick="christmas()"
-      style="background-color: rgb(13, 116, 7); color: rgb(252, 42, 0)"
-    >
-      Christmas-mode
-    </button>
-    <button
-      onclick="darkMode()"
-      style="background-color: rgb(3, 4, 3); color: rgb(222, 222, 222)"
-    >
-      Dark-mode
-    </button>
-    <button
-      onclick="lightMode()"
-      style="background-color: rgb(248, 253, 248); color: rgb(15, 12, 11)"
-    >
-      Light-mode
-    </button>
 
-    <p id="demo1"></p>
-    <p id="demo2"></p>
-    <p id="demo3"></p>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomentJS</title>
+</head>
 
-    <p>Please select your language:</p>
-      <input type="radio" id="en" name="fav_language" onclick="date('en')" />  
-    <label for="en">English</label><br />
+<body id="body">
+  <button onclick="christmas()" style="background-color: rgb(10, 72, 7); color: rgb(252, 42, 0)">
+    Christmas-mode
+  </button>
+  <button onclick="darkMode()" style="background-color: rgb(3, 4, 3); color: rgb(222, 222, 222)">
+    Dark-mode
+  </button>
+  <button onclick="lightMode()" style="background-color: rgb(248, 253, 248); color: rgb(15, 12, 11)">
+    Light-mode
+  </button>
 
-      <input type="radio" id="sv" name="fav_language" onclick="date('sv')" />  
-    <label for="sv">Swedish</label><br />
+  <p id="demo1"></p>
+  <p id="demo2"></p>
+  <p id="demo3"></p>
 
-      <input type="radio" id="ar" name="fav_language" onclick="date('ar')" />  
-    <label for="ar">Arabic</label><br />
+  <p>Please select your language:</p>
+    <input type="radio" id="en" name="fav_language" onclick="date('en')" />  
+  <label for="en">English</label><br />
 
-      <input type="radio" id="fi" name="fav_language" onclick="date('fi')" />  
-    <label for="fi">Finnish</label><br />
+    <input type="radio" id="sv" name="fav_language" onclick="date('sv')" />  
+  <label for="sv">Swedish</label><br />
 
-      <input type="radio" id="fr" name="fav_language" onclick="date('fr')" />  
-    <label for="sv">French</label><br />
+    <input type="radio" id="ar" name="fav_language" onclick="date('ar')" />  
+  <label for="ar">Arabic</label><br />
 
-     
-    <input
-      type="radio"
-      id="zh-cn"
-      name="fav_language"
-      onclick="date('zh-cn')"
-    />
-      <label for="zh-cn">Chinese</label><br />
+    <input type="radio" id="fi" name="fav_language" onclick="date('fi')" />  
+  <label for="fi">Finnish</label><br />
 
-    <h1>Leap year?</h1>
-    <p id="leapyear"></p>
+    <input type="radio" id="fr" name="fav_language" onclick="date('fr')" />  
+  <label for="sv">French</label><br />
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"
-      integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script>
-      function date(lang) {
-        moment().format();
-        moment.locale(lang);
-        let time = moment();
-        document.getElementById("demo1").innerHTML = time.format("LLLL");
-        document.getElementById("demo2").innerHTML = time.format('MMMM Do YYYY, h:mm:ss a');
-        document.getElementById("demo3").innerHTML = time
-          .add(3, "days")
-          .calendar();
-          setInterval(date, 1000);
-      }
+   
+  <input type="radio" id="zh-cn" name="fav_language" onclick="date('zh-cn')" />
+    <label for="zh-cn">Chinese</label><br />
 
-      function dateDefault() {
-        document.getElementById("demo1").innerHTML = moment().format("LLLL");
-        document.getElementById("demo2").innerHTML = moment().format('MMMM Do YYYY, h:mm:ss a');
-        document.getElementById("demo3").innerHTML = moment()
-          .add(3, "days")
-          .calendar();
-          setInterval(date, 1000);
-      }
-      dateDefault();
+  <p>Leap year?</p>
+  <p id="leapyear"></p>
 
-      // ======= LEAP YEAR CHECK =============
-      // Assume year >= 1582 in the Gregorian calendar.
-      function leapYear() {
-        const textParagraph = document.querySelector("#leapyear");
-        const date = new Date();
-        let year = date.getFullYear();
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"
+    integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function date(lang) {
+      moment().format();
+      moment.locale(lang);
+      let time = moment();
+      document.getElementById("demo1").innerHTML = time.format("LLLL");
+      document.getElementById("demo2").innerHTML = time.format('MMMM Do YYYY, h:mm:ss a');
+      document.getElementById("demo3").innerHTML = time
+        .add(3, "days")
+        .calendar();
+      setInterval(date, 1000);
+    }
 
-        return moment(year).isLeapYear()
-          ? (textParagraph.textContent = `${year} is a leap year!`)
-          : (textParagraph.textContent = `${year} is not a leap year!`);
-      }
-      leapYear();
-      // ======= LEAP YEAR CHECK END =========
+    function dateDefault() {
+      document.getElementById("demo1").innerHTML = moment().format("LLLL");
+      document.getElementById("demo2").innerHTML = moment().format('MMMM Do YYYY, h:mm:ss a');
+      document.getElementById("demo3").innerHTML = moment()
+        .add(3, "days")
+        .calendar();
+      setInterval(date, 1000);
+    }
+    dateDefault();
 
-      function christmas() {
-        const body = document.getElementById("body");
-        body.style.backgroundColor = "rgb(221, 28, 28)";
-        body.style.color = " rgb(13, 116, 7)";
-      }
-      function darkMode() {
-        const body = document.getElementById("body");
-        body.style.backgroundColor = "rgb(3, 4, 3)";
-        body.style.color = " rgb(222, 222, 222)";
-      }
-      function lightMode() {
-        const body = document.getElementById("body");
-        body.style.backgroundColor = "";
-        body.style.color = "";
-      }
-    </script>
-  </body>
+    // ======= LEAP YEAR CHECK =============
+    // Assume year >= 1582 in the Gregorian calendar.
+    function leapYear() {
+      const textParagraph = document.querySelector("#leapyear");
+      const date = new Date();
+      let year = date.getFullYear();
+
+      return moment(year).isLeapYear() ?
+        (textParagraph.textContent = `${year} is a leap year!`) :
+        (textParagraph.textContent = `${year} is not a leap year!`);
+    }
+    leapYear();
+    // ======= LEAP YEAR CHECK END =========
+
+    function christmas() {
+      const body = document.getElementById("body");
+      body.style.backgroundColor = "rgb(221, 28, 28)";
+      body.style.color = "rgb(6, 43, 6)";
+    }
+
+    function darkMode() {
+      const body = document.getElementById("body");
+      body.style.backgroundColor = "rgb(3, 4, 3)";
+      body.style.color = " rgb(222, 222, 222)";
+    }
+
+    function lightMode() {
+      const body = document.getElementById("body");
+      body.style.backgroundColor = "";
+      body.style.color = "";
+    }
+  </script>
+</body>
+
 </html>
