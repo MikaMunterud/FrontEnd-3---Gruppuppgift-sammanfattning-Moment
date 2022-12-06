@@ -70,7 +70,7 @@
         moment.locale(lang);
         let time = moment();
         document.getElementById("demo1").innerHTML = time.format("LLLL");
-        document.getElementById("demo2").innerHTML = time.format("llll");
+        document.getElementById("demo2").innerHTML = time.format('MMMM Do YYYY, h:mm:ss a');
         document.getElementById("demo3").innerHTML = time
           .add(3, "days")
           .calendar();
@@ -79,7 +79,7 @@
 
       function dateDefault() {
         document.getElementById("demo1").innerHTML = moment().format("LLLL");
-        document.getElementById("demo2").innerHTML = moment().format("llll");
+        document.getElementById("demo2").innerHTML = moment().format('MMMM Do YYYY, h:mm:ss a');
         document.getElementById("demo3").innerHTML = moment()
           .add(3, "days")
           .calendar();
